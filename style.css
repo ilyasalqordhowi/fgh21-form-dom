@@ -1,0 +1,41 @@
+body{
+    display: flex;
+    align-items: center;
+    background-color: black;
+    background-repeat: no-repeat;
+    flex-direction: column;
+}
+.box{
+    width: 400px;
+    background-image: url(./assets/Killua\ Zoldyck\ -\ Hunter\ x\ Hunter.jpg);
+    background-size:350px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.form-identitas{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    padding: 20px;
+    justify-items: center;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 1.1);
+    background-color: black;
+    background-image:linear-gradient(to right, black , #1479de);
+    border-radius: 30px;
+    filter: opacity(70%);
+    color: white;
+}
+.font1{
+    color: white;
+}
+.form-identitas .all-box .input#name{
+    border-radius: 30px;
+    border-style: none;
+    width: 100px;
+}
+.form-identitas .all-box button{
+    border-style: none;
+    border-radius: 100px;
+    background-color: antiquewhite;
+}
+

@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tugas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="box">
+    <div class="form-identitas">
+        <div class="all-box">
     <form id="identitas"></form>
-    <div>
+    <h1>ROKOK ENAK</h1>
+    <div class="font1">
         <label for="name">Siapa nama anda?</label>
     </div>
     <input type="text" id="name">
@@ -18,19 +23,19 @@
     <div>
         <div>Apa jenis kelamin anda?</div>
         <input type="radio" id="laki-laki" name="kelamin" value="laki-laki">
-            <label for="laki-laki">laki-laki</label>
-
-            <input type="radio" id="perempuan" name="kelamin" value="perempuan">
-            <label for="perempuan">perempuan</label>
+        <label for="laki-laki">laki-laki</label>
+        
+        <input type="radio" id="perempuan" name="kelamin" value="perempuan">
+        <label for="perempuan">perempuan</label>
     </div>
     <div>
         <div>Apakah anda perokok?</div>
-            <input type="radio" id="Yes" name="perokok" value="Ya">
-            <label for="Ya">Ya</label>
-
-            <input type="radio" id="No" name="perokok" value="Tidak">
-            <label for="Tidak">Tidak</label>
-      
+        <input type="radio" id="Yes" name="perokok" value="Ya">
+        <label for="Yes">Ya</label>
+        
+        <input type="radio" id="No" name="perokok" value="Tidak">
+        <label for="No">Tidak</label>
+        
     </div>
     <div>
         <div>Jika anda perokok,rokok apa yang anda pernah coba?</div>
@@ -52,6 +57,7 @@
         </div>
     </div>
     <button id="save">save</button>
+
     <table id="table" border="1" style="border-collapse: collapse; margin-top: 30px;">
         <thead>
             <tr>
@@ -72,173 +78,92 @@
             </tr>
         </tbody>
     </table>
-    <script>
-        
-        const btn = document.getElementById("save")
-        btn.addEventListener("click" , prosesData)
-        
-        const dataList = document.getElementById("list-identitas")
-        
-        function prosesData (event) {
-            event.preventDefault()
-            const tr = document.createElement("tr")
-            const tdName = document.createElement("td")
-            const tdAge = document.createElement("td")
-            const tdGender = document.createElement("td")
-            const tdSmokers = document.createElement("td")
-            const tdType= document.createElement("td")
-
-            // name
-            const name = document.getElementById("name")
-            const valueNama = name.value
-            tdName.textContent = valueNama
-            
-            tr.appendChild(tdName)
-            dataList.appendChild(tr)
-
-            // age
-            const age = document.getElementById("umur")
-            const valueAge = age.value
-            tdAge.textContent = valueAge
-            
-            tr.appendChild(tdAge)
-            dataList.appendChild(tr)
-
-            // gender
-            const selectGenderMale = document.getElementById("laki-laki").checked
-            if (selectGenderMale == true) {
-                const valueGenderMale = document.getElementById("laki-laki")
-                const genderMale = valueGenderMale.value
-                tdGender.textContent = genderMale
-            } 
-            const selectGenderFemale = document.getElementById("perempuan").checked
-            if (selectGenderFemale == true) {
-                const valueGenderFemale = document.getElementById("perempuan")
-                const genderFemale = valueGenderFemale.value
-                tdGender.textContent = genderFemale
-            } 
-
-            tr.appendChild(tdGender)
-            dataList.appendChild(tr)
-
-            // Smokers
-            const selectSmokersYes = document.getElementById("Yes").checked
-            if (selectSmokersYes == true) {
-                const valueSmokersYes = document.getElementById("Yes")
-                const SmokersYes = valueSmokersYes.value
-                tdSmokers.textContent = SmokersYes
-            } 
-            const selectSmokersNo = document.getElementById("No").checked
-            if (selectSmokersNo == true) {
-                const valueSmokersNo = document.getElementById("No")
-                const smokersNo  = valueSmokersNo.value
-                tdSmokers.textContent = smokersNo
-            } 
-
-            tr.appendChild(tdSmokers)
-            dataList.appendChild(tr)
-
-            //type
-            const listCigaret = document.getElementsByName("typeRokok")
-            let cigar = ""
-            for (let i = 0; i < listCigaret.length; i++) {
-               if (listCigaret[i].checked) {
-                cigar = cigar + listCigaret[i].value + "; "
-                
-               } 
-            }
-            tdType.textContent = cigar
-
-            tr.appendChild(tdType)
-            dataList.appendChild(tr) 
-
-        }
-    </script>
-
-
-
-    <!-- <script>
-        const form = document.getElementById("identitas")
-        const nama = document.createElement("div")
-        const inputNama = document.createElement("input")
-
-        inputNama.setAttribute("type" , "text")
-        nama.textContent = "Siapa nama anda ?"
-
-        form.appendChild(nama)
-        form.appendChild(inputNama)
-
-        const umur = document.createElement("div")
-        const inputUmur = document.createElement("input")
-
-        inputUmur.setAttribute("type" , "text")
-        umur.textContent = "Berapa umur anda ?"
-
-        form.appendChild(umur)
-        form.appendChild(inputUmur)
-
-        const jenisKelamin = document.createElement("div")
-        jenisKelamin.textContent = "Apa jenis kelamin anda ?"
-
-        const inputKelaminLaki = document.createElement("input")
-        inputKelaminLaki.setAttribute("type" , "radio")
-        const kelaminLaki = document.createElement("label")
-        const lakiLaki = document.createTextNode("Laki-laki")
-        kelaminLaki.setAttribute("for","Laki-laki")
-
-        const inputKelaminPerempuan = document.createElement("input")
-        inputKelaminPerempuan.setAttribute("type" , "radio")
-        const kelaminPerempuan = document.createElement("label")
-        const perempuan = document.createTextNode("Perempuan")
-        kelaminPerempuan.setAttribute("for","Perempuan")
-
-       
-
-        form.appendChild(jenisKelamin)
-        form.appendChild(inputKelaminLaki)
-        form.appendChild(lakiLaki)
-        form.appendChild(inputKelaminPerempuan)
-        form.appendChild(perempuan)
-
-        const perokok = document.createElement("div")
-        perokok.textContent = "Apa anda merokok?"
-
-        const inputPerokokYes = document.createElement("input")
-        inputPerokokYes.setAttribute("type" , "radio")
-        const perokok1 = document.createElement("label")
-        const yesPerokok = document.createTextNode("Ya")
-        perokok1.setAttribute("for","Ya")
-
-        const inputperokokNo = document.createElement("input")
-        inputperokokNo.setAttribute("type" , "radio")
-        const perokok2 = document.createElement("label")
-        const noPerokok = document.createTextNode("Tidak")
-        perokok2.setAttribute("for","Tidak")
-
-       
-
-        form.appendChild(perokok)
-        form.appendChild(inputPerokokYes)
-        form.appendChild(yesPerokok)
-        form.appendChild(inputperokokNo)
-        form.appendChild(noPerokok)
-
-
-        
-        const jenisRokok = document.createElement("div")
-        jenisRokok.textContent = "J?"
-
-        const inputRokok = document.createElement("input")
-        inputRokok.setAttribute("type" , "radio")
-        const rokok = document.createElement("label")
-        const rokok1= document.createTextNode("Laki-laki")
-        rokok1.setAttribute("for","Laki-laki")
-
-
-        form.appendChild(jenisRokok)
-        form.appendChild(inputRokok)
-        form.appendChild(rokok1)
-
-    </script> -->
+</div>
+</div>
+</div>
+    <script src="tugas.js"></script>
 </body>
 </html>
+<!-- <script>
+    const form = document.getElementById("identitas")
+    const nama = document.createElement("div")
+    const inputNama = document.createElement("input")
+
+    inputNama.setAttribute("type" , "text")
+    nama.textContent = "Siapa nama anda ?"
+
+    form.appendChild(nama)
+    form.appendChild(inputNama)
+
+    const umur = document.createElement("div")
+    const inputUmur = document.createElement("input")
+
+    inputUmur.setAttribute("type" , "text")
+    umur.textContent = "Berapa umur anda ?"
+
+    form.appendChild(umur)
+    form.appendChild(inputUmur)
+
+    const jenisKelamin = document.createElement("div")
+    jenisKelamin.textContent = "Apa jenis kelamin anda ?"
+
+    const inputKelaminLaki = document.createElement("input")
+    inputKelaminLaki.setAttribute("type" , "radio")
+    const kelaminLaki = document.createElement("label")
+    const lakiLaki = document.createTextNode("Laki-laki")
+    kelaminLaki.setAttribute("for","Laki-laki")
+
+    const inputKelaminPerempuan = document.createElement("input")
+    inputKelaminPerempuan.setAttribute("type" , "radio")
+    const kelaminPerempuan = document.createElement("label")
+    const perempuan = document.createTextNode("Perempuan")
+    kelaminPerempuan.setAttribute("for","Perempuan")
+
+   
+
+    form.appendChild(jenisKelamin)
+    form.appendChild(inputKelaminLaki)
+    form.appendChild(lakiLaki)
+    form.appendChild(inputKelaminPerempuan)
+    form.appendChild(perempuan)
+
+    const perokok = document.createElement("div")
+    perokok.textContent = "Apa anda merokok?"
+
+    const inputPerokokYes = document.createElement("input")
+    inputPerokokYes.setAttribute("type" , "radio")
+    const perokok1 = document.createElement("label")
+    const yesPerokok = document.createTextNode("Ya")
+    perokok1.setAttribute("for","Ya")
+
+    const inputperokokNo = document.createElement("input")
+    inputperokokNo.setAttribute("type" , "radio")
+    const perokok2 = document.createElement("label")
+    const noPerokok = document.createTextNode("Tidak")
+    perokok2.setAttribute("for","Tidak")
+
+   
+
+    form.appendChild(perokok)
+    form.appendChild(inputPerokokYes)
+    form.appendChild(yesPerokok)
+    form.appendChild(inputperokokNo)
+    form.appendChild(noPerokok)
+
+
+    
+    const jenisRokok = document.createElement("div")
+    jenisRokok.textContent = "J?"
+
+    const inputRokok = document.createElement("input")
+    inputRokok.setAttribute("type" , "radio")
+    const rokok = document.createElement("label")
+    const rokok1= document.createTextNode("Laki-laki")
+    rokok1.setAttribute("for","Laki-laki")
+
+
+    form.appendChild(jenisRokok)
+    form.appendChild(inputRokok)
+    form.appendChild(rokok1)
+
+</script> -->
