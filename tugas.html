@@ -139,58 +139,20 @@
             dataList.appendChild(tr)
 
             //type
-            // const selectType1 = document.getElementById("Gudang").checked
-            // if (selectType1 == true) {
-            //     const valueType1 = document.getElementById("Gudang")
-            //     const SmokersType1 = valueType1.value
-            //     tdType.textContent = SmokersType1
-            // } 
-            // const selectType2 = document.getElementById("Lucky").checked
-            // if (selectType2 == true) {
-            //     const valueType2 = document.getElementById("Lucky")
-            //     const SmokersType2 = valueType2.value
-            //     tdType.textContent = SmokersType2
-            // } 
-            // const selectType3 = document.getElementById("Marlboro").checked
-            // if (selectType3 == true) {
-            //     const valueType3 = document.getElementById("Marlboro")
-            //     const SmokersType3 = valueType3.value
-            //     tdType.textContent = SmokersType3
-            // } 
-            // const selectType4 = document.getElementById("Esse").checked
-            // if (selectType4 == true) {
-            //     const valueType4 = document.getElementById("Esse")
-            //     const SmokersType4 = valueType4.value
-            //     tdType.textContent = SmokersType4
-            // } 
             const listCigaret = document.getElementsByName("typeRokok")
             let cigar = ""
             for (let i = 0; i < listCigaret.length; i++) {
                if (listCigaret[i].checked) {
-                cigar = cigar + listCigaret.value
+                cigar = cigar + listCigaret[i].value + "; "
                 
                } 
             }
-            console.log(cigar)
-            // tr.appendChild(tdType)
-            // dataList.appendChild(tr) 
+            tdType.textContent = cigar
+
+            tr.appendChild(tdType)
+            dataList.appendChild(tr) 
 
         }
-
-
-        
-        // const nama = event.target.nama.value
-        //     const umur = event.target.umur.value
-        //     const kelaminLaki = event.target.laki.value
-        //     const kelaminPerempuan = event.target.perempuan.value
-        //     const perokokYa = event.target.ya.value
-        //     const perokokTidak = event.target.Tidak.value
-        //     const gudangGaram= event.target.Gudang.value
-        //     const LuckyStrike = event.target.Lucky.value
-        //     const Marlboro= event.target.Marlboro.value
-        //     const Esse = event.target.Esse.value
-            
-        // }
     </script>
 
 
