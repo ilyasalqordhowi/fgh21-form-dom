@@ -6,6 +6,8 @@ btn.addEventListener("click" , prosesData)
 const dataList = document.getElementById("list-identitas")
 
 function prosesData (event) {
+    // reset
+    document.getElementById("identitas").reset();
     event.preventDefault()
     const tr = document.createElement("tr")
     const tdName = document.createElement("td")
@@ -78,4 +80,5 @@ function prosesData (event) {
     tr.appendChild(tdType)
     dataList.appendChild(tr) 
 
-}
+
+} 
