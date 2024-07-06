@@ -17,7 +17,7 @@
     <input type="number" id="umur">
     <div>
         <div>Apa jenis kelamin anda?</div>
-        <input type="radio" id="laki-laki" name="kelamin" value="laki">
+        <input type="radio" id="laki-laki" name="kelamin" value="laki-laki">
             <label for="laki-laki">laki-laki</label>
 
             <input type="radio" id="perempuan" name="kelamin" value="perempuan">
@@ -25,8 +25,8 @@
     </div>
     <div>
         <div>Apakah anda perokok?</div>
-            <input type="radio" id="ya" name="perokok" value="ya">
-            <label for="ya">Ya</label>
+            <input type="radio" id="Yes" name="perokok" value="Ya">
+            <label for="Ya">Ya</label>
 
             <input type="radio" id="No" name="perokok" value="Tidak">
             <label for="Tidak">Tidak</label>
@@ -35,19 +35,19 @@
     <div>
         <div>Jika anda perokok,rokok apa yang anda pernah coba?</div>
         <div>
-            <input type="checkbox" id="Gudang" value="Gudang">
+            <input type="checkbox" id="Gudang" value="Gudang Garam Filter" name="typeRokok">
             <label for="Gudang">Gudang Garam Filter</label>
         </div>
         <div>
-            <input type="checkbox" id="Lucky" value="Lucky">
+            <input type="checkbox" id="Lucky" value="Lucky Strike" name="typeRokok">
             <label for="Lucky">Lucky Strike</label>
         </div>
         <div>
-            <input type="checkbox" id="Marlboro" value="Marlboro">
+            <input type="checkbox" id="Marlboro" value="Marlboro" name="typeRokok">
             <label for="Marlboro">Marlboro</label>
         </div>
         <div>
-            <input type="checkbox" id="Esse" value="Esse">
+            <input type="checkbox" id="Esse" value="Esse" name="typeRokok" >
             <label for="Esse">Esse</label>
         </div>
     </div>
@@ -74,15 +74,112 @@
     </table>
     <script>
         
-        // const btn = document.getElementById("save")
-        // btn.addEventListener("click" , prosesData)
+        const btn = document.getElementById("save")
+        btn.addEventListener("click" , prosesData)
+        
+        const dataList = document.getElementById("list-identitas")
+        
+        function prosesData (event) {
+            event.preventDefault()
+            const tr = document.createElement("tr")
+            const tdName = document.createElement("td")
+            const tdAge = document.createElement("td")
+            const tdGender = document.createElement("td")
+            const tdSmokers = document.createElement("td")
+            const tdType= document.createElement("td")
 
-        // const prosesData = () => {
-        //     event.preventDefault();
-        //     const dataList = document.getElementById("list-identitas")
-        //     const atas = document.createElement("tr")
-        //     const bawah = document.createElement("td")
-        //     const nama = event.target.nama.value
+            // name
+            const name = document.getElementById("name")
+            const valueNama = name.value
+            tdName.textContent = valueNama
+            
+            tr.appendChild(tdName)
+            dataList.appendChild(tr)
+
+            // age
+            const age = document.getElementById("umur")
+            const valueAge = age.value
+            tdAge.textContent = valueAge
+            
+            tr.appendChild(tdAge)
+            dataList.appendChild(tr)
+
+            // gender
+            const selectGenderMale = document.getElementById("laki-laki").checked
+            if (selectGenderMale == true) {
+                const valueGenderMale = document.getElementById("laki-laki")
+                const genderMale = valueGenderMale.value
+                tdGender.textContent = genderMale
+            } 
+            const selectGenderFemale = document.getElementById("perempuan").checked
+            if (selectGenderFemale == true) {
+                const valueGenderFemale = document.getElementById("perempuan")
+                const genderFemale = valueGenderFemale.value
+                tdGender.textContent = genderFemale
+            } 
+
+            tr.appendChild(tdGender)
+            dataList.appendChild(tr)
+
+            // Smokers
+            const selectSmokersYes = document.getElementById("Yes").checked
+            if (selectSmokersYes == true) {
+                const valueSmokersYes = document.getElementById("Yes")
+                const SmokersYes = valueSmokersYes.value
+                tdSmokers.textContent = SmokersYes
+            } 
+            const selectSmokersNo = document.getElementById("No").checked
+            if (selectSmokersNo == true) {
+                const valueSmokersNo = document.getElementById("No")
+                const smokersNo  = valueSmokersNo.value
+                tdSmokers.textContent = smokersNo
+            } 
+
+            tr.appendChild(tdSmokers)
+            dataList.appendChild(tr)
+
+            //type
+            // const selectType1 = document.getElementById("Gudang").checked
+            // if (selectType1 == true) {
+            //     const valueType1 = document.getElementById("Gudang")
+            //     const SmokersType1 = valueType1.value
+            //     tdType.textContent = SmokersType1
+            // } 
+            // const selectType2 = document.getElementById("Lucky").checked
+            // if (selectType2 == true) {
+            //     const valueType2 = document.getElementById("Lucky")
+            //     const SmokersType2 = valueType2.value
+            //     tdType.textContent = SmokersType2
+            // } 
+            // const selectType3 = document.getElementById("Marlboro").checked
+            // if (selectType3 == true) {
+            //     const valueType3 = document.getElementById("Marlboro")
+            //     const SmokersType3 = valueType3.value
+            //     tdType.textContent = SmokersType3
+            // } 
+            // const selectType4 = document.getElementById("Esse").checked
+            // if (selectType4 == true) {
+            //     const valueType4 = document.getElementById("Esse")
+            //     const SmokersType4 = valueType4.value
+            //     tdType.textContent = SmokersType4
+            // } 
+            const listCigaret = document.getElementsByName("typeRokok")
+            let cigar = ""
+            for (let i = 0; i < listCigaret.length; i++) {
+               if (listCigaret[i].checked) {
+                cigar = cigar + listCigaret.value
+                
+               } 
+            }
+            console.log(cigar)
+            // tr.appendChild(tdType)
+            // dataList.appendChild(tr) 
+
+        }
+
+
+        
+        // const nama = event.target.nama.value
         //     const umur = event.target.umur.value
         //     const kelaminLaki = event.target.laki.value
         //     const kelaminPerempuan = event.target.perempuan.value
@@ -93,10 +190,7 @@
         //     const Marlboro= event.target.Marlboro.value
         //     const Esse = event.target.Esse.value
             
-        //     dataList.appendChild(nama)
         // }
-
-        
     </script>
 
 
