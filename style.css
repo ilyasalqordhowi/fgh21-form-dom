@@ -15,7 +15,6 @@ body{
     justify-items: center;
     box-shadow: 0 0 10px rgb(255, 255, 255);
     background-color: black;
-    /* background-image:linear-gradient(to right, black , #1479de); */
     border-radius: 30px; 
     color: white;
     margin: 100px 50px;
@@ -23,7 +22,7 @@ body{
 }
 .form-identitas .blur{
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.344), rgba(0, 0, 0, 0.566));
-    z-index: 9;
+    z-index: 1;
 
 }
 .all-box{

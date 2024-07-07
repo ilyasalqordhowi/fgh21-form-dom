@@ -6,32 +6,44 @@ btn.addEventListener("click" , prosesData)
 const dataList = document.getElementById("list-identitas")
 
 function prosesData (event) {
-    // reset
-    document.getElementById("identitas").reset();
-    event.preventDefault()
+    event.preventDefault() 
     const tr = document.createElement("tr")
     const tdName = document.createElement("td")
     const tdAge = document.createElement("td")
     const tdGender = document.createElement("td")
     const tdSmokers = document.createElement("td")
     const tdType= document.createElement("td")
-
+    
     // name
     const name = document.getElementById("name")
     const valueNama = name.value
     tdName.textContent = valueNama
     
+    // alert
+    if( valueNama== ""){
+        window.alert("Enter your personal data first")
+        return
+    }
+
+
     tr.appendChild(tdName)
     dataList.appendChild(tr)
-
+    
     // age
     const age = document.getElementById("umur")
     const valueAge = age.value
     tdAge.textContent = valueAge
     
+     // alert
+     if( valueAge== ""){
+        window.alert("Enter your personal data first")
+        return
+    }
+
+
     tr.appendChild(tdAge)
     dataList.appendChild(tr)
-
+    
     // gender
     const selectGenderMale = document.getElementById("laki-laki").checked
     if (selectGenderMale == true) {
@@ -39,6 +51,7 @@ function prosesData (event) {
         const genderMale = valueGenderMale.value
         tdGender.textContent = genderMale
     } 
+
     const selectGenderFemale = document.getElementById("perempuan").checked
     if (selectGenderFemale == true) {
         const valueGenderFemale = document.getElementById("perempuan")
@@ -48,7 +61,13 @@ function prosesData (event) {
 
     tr.appendChild(tdGender)
     dataList.appendChild(tr)
-
+    
+    // alert
+    if( tdGender== ""){
+       window.alert("Enter your personal data first")
+       return
+   }
+   
     // Smokers
     const selectSmokersYes = document.getElementById("Yes").checked
     if (selectSmokersYes == true) {
@@ -62,23 +81,25 @@ function prosesData (event) {
         const smokersNo  = valueSmokersNo.value
         tdSmokers.textContent = smokersNo
     } 
-
+    
     tr.appendChild(tdSmokers)
     dataList.appendChild(tr)
-
+    
     //type
     const listCigaret = document.getElementsByName("typeRokok")
     let cigar = ""
     for (let i = 0; i < listCigaret.length; i++) {
-       if (listCigaret[i].checked) {
-        cigar = cigar + listCigaret[i].value + "; "
-        
-       } 
+        if (listCigaret[i].checked) {
+            cigar = cigar + listCigaret[i].value + "; "
+            
+        } 
     }
     tdType.textContent = cigar
-
+    
     tr.appendChild(tdType)
     dataList.appendChild(tr) 
-
-
+    
+    // reset
+    document.getElementById("identitas").reset();
+    
 } 
